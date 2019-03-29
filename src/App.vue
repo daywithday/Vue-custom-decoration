@@ -1,37 +1,5 @@
 <template>
 	<div id="app">
-		<div class="content-wrapper" style="display: flex;justify-content: space-between;">
-			<div class="left_lead2">
-				<div class="page_name">店铺管理</div>
-				<div class="left_lead2_list">
-					<div class="left_lead2_list_item">
-						<a href="#">门店管理</a>
-					</div>
-					<div class="left_lead2_list_item">
-						<a href="#">门店概况</a>
-					</div>
-					<div class="left_lead2_list_item active">
-						<a href="#">小程序装修</a>
-					</div>
-					<div class="left_lead2_list_item">
-						<a href="#">风格设置</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="right_content">
-				<div class="content_lead">
-					<div class="content_lead_item active">
-						<a href="#">小程序概况</a>
-					</div>
-					<div class="content_lead_item">
-						<a href="#">微页面</a>
-					</div>
-					<div class="content_lead_item">
-						<a href="#">店铺导航</a>
-					</div>
-				</div>
-				<div class="content_main">
 					<div id="app" class="content_main_1" style="display: flex;justify-content: center;">
 						<div class="phone_view">
 							<div class="view_content" :style="{backgroundColor:'rgba('+head_tool.data.backgroundColor+')'}">
@@ -65,21 +33,7 @@
 						<div class="edit_manege"></div>
 					</div>
 
-					<div class="content_main_2">
-						<div class="item_img">
-							<img src="../static/img/u60.png" style="width: 100%;">
-						</div>
-						<div class="item_mgs">
-							<a href>
-								<i class="fa fa-commenting-o" style="font-size: 23px;"></i> 在线客服
-							</a>
-							<p>电话客服： 400-00-530</p>
-						</div>
-						<div class="item_name">
-							<p>吉修手机版</p>
-							<p>随时随地管理店铺</p>
-						</div>
-					</div>
+					
 
 					<div class="content_footer">
 						<button @click="saveSetting()">保存</button>
@@ -87,9 +41,6 @@
 					</div>
 					<div style="height: 40px;"></div>
 				</div>
-			</div>
-		</div>
-	</div>
 </template>
 
 <script>
