@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vue测试2</title>
+  <script type="text/javascript" src="js/vue.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+  <style type="text/css">
+    *{
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+      font-family: "微软雅黑";
+    }
+    #box{
+      width: 500px;
+      height: auto;
+      border: 1px solid #ccc;
+      margin: 50px auto;
+      padding: 10px;
+    }
+    .search{
+      width: 480px;
+      height: 100px;
+      text-align: center;
+    }
+    .searchBox{
+      width: 230px;
+      height: 40px;
+      outline: none;
+      text-indent: 10px;
+      margin-right: 20px;
+    }
+    .btn{
+      width: 100px;
+      height: 50px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .goodsheet{
+      width: 500px;
+      height: auto;
+      border: 1px solid #eee;
+    }
+    .goodsheet tr td,
+    .goodsheet tr th{
+      width: 33%;
+      border: 1px solid #eee;
+      padding: 5px 10px;
+      text-align: left;
+    }
+    .goodsheet tr th span{
+      background: #ff9900;
+      padding: 0 6px;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <div class="search">
+    <input type="text" class="searchBox" v-model="searchVal">
+    <button class="btn">搜 索</button>
+  </div>
+  <table class="goodsheet">
+    <tr>
+      <th>商品名</th>
+      <th>单价
+        <span @click="orderFn('price', false)">↑</span>
+        <span @click="orderFn('price', true)">↓</span>
+      </th>
+      <th>销量
+        <span @click="orderFn('sales', false)">↑</span>
+        <span @click="orderFn('sales', true)">↓</span>
+      </th>
+    </tr>
+    <tr v-for='(item, key) in list'>
+      <td>{{item.name}}</td>
+      <td>{{item.price}}</td>
+      <td>{{item.sales}}万</td>
+    </tr>
+  </table>
+</div>
+<script type="text/javascript">
+  var myVueTest = new Vue({
+    el:'#box',
+    data:{
+      goodsList:[
+//假数据
+        {name:"三星Galaxy Note8",price:5200,sales:2.6},
+        {name:"iphone5s",price:2500,sales:2.2},
+        {name:"iphone6",price:2800,sales:1.6},
+        {name:"iphone6s",price:3200,sales:2.9},
+        {name:"iphone7",price:3800,sales:12.6},
+        {name:"iphone7plus",price:4200,sales:2.1},
+        {name:"iphone8",price:5500,sales:10.6},
+        {name:"华为",price:4600,sales:7.6},
+        {name:"小米",price:1200,sales:32.6},
+        {name:"OPPOR11",price:3000,sales:1.2},
+        {name:"vivoX20",price:3250,sales:2.9}
+      ],
+      searchVal:'', //默认输入为空
+      letter:'', //默认不排序
+      original:false //默认从小到大排列
+    },
+    methods:{
+      orderFn(letter,original){
+        this.letter = letter; //排序字段 price or sales
+        this.original = original; //排序方式 up or down
+      }
+    },
+//通过计算属性过滤数据
+    computed:{
+      list: function(){
+        var _this = this;
+//逻辑-->根据input的value值筛选goodsList中的数据
+        var arrByZM = [];//声明一个空数组来存放数据
+        for (var i=0;i<this.goodsList.length;i++){
+//for循环数据中的每一项（根据name值）
+          if(this.goodsList[i].name.search(this.searchVal) != -1){
+//判断输入框中的值是否可以匹配到数据，如果匹配成功
+            arrByZM.push(this.goodsList[i]);
+//向空数组中添加数据
+          }
+        }
+//逻辑-->升序降序排列 false: 默认从小到大 true：默认从大到小
+//判断，如果要letter不为空，说明要进行排序
+        if(this.letter != ''){
+          arrByZM.sort(function( a , b){
+            if(_this.original){
+              return b[_this.letter] - a[_this.letter];
+            }else{
+              return a[_this.letter] - b[_this.letter];
+            }
+          });
+        }
+//一定要记得返回筛选后的数据
+        return arrByZM;
+      }
+    }
+  });
+</script>
+</body>
+</html>

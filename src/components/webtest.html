@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <div :style="{fontSize:fontsize + 'em'}">
+    <blog-msgs v-for="msg in msgs" v-bind:key="msg.id" v-bind:msg="msg">
+
+    </blog-msgs>
+  </div>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+<script>
+  Vue.component('blog-msgs', {
+    props: ['msg'],
+    template: `
+    <div>
+      <h3>{{ msg.title }}</h3>
+      <button>
+        Enlarge text
+      </button>
+      <div v-html="msg.content"></div>
+    </div>
+  `
+  })
+  var vm = new Vue({
+    el:'#app',
+    data:{
+      msgs:[
+        {
+        id:1,
+        title: '11111',
+        content: '<div>1271927</div>'
+      },
+        {
+          id:2,
+          title: '11111',
+          content: '<div>1271927</div>'
+        },
+          {
+            id:3,
+            title: '11111',
+            content: '<div>1271927</div>'
+          }],
+      fontsize:1
+    },
+  })
+
+</script>
+</html>
