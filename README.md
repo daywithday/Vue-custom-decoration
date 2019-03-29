@@ -1,7 +1,7 @@
 # my-project
 
 > 声明在前面,这是模仿有赞商城的自定义装修,只实现了部分小功能,并不完善,提供一个思路.
-
+ ![image](https://github.com/daywithday/Vue-custom-decoration/static/img.png)
 ## Build Setup
 
 ``` bash
