@@ -12,10 +12,9 @@
   "dependencies": {
     "awe-dnd": "^0.3.4",
     "axios": "^0.18.0",
-    "iview": "^3.2.1",
+    "iview": "^3.1.5",
     "vue": "^2.5.2",
     "vue-color": "^2.7.0",
-    "vue-dragging": "^1.1.0",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1"
   },
@@ -24,7 +23,6 @@
     "babel-core": "^6.22.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.1",
-    "babel-plugin-import": "^1.11.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-plugin-transform-vue-jsx": "^3.5.0",

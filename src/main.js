@@ -18,13 +18,11 @@ import '../static/UE/ueditor.parse.min.js'
 
 
 axios.defaults.withCredentials=true;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 Vue.config.productionTip = false
 Vue.prototype.$ajax = axios
 Vue.prototype.axios = axios;
 Vue.prototype.qs = Qs;
 Vue.use(VueDND)
-Vue.config.devtools = true
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -12,10 +12,10 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/baseUrl': { //前端路由匹配模式
-        target: 'http://onezhan.com', //后端请求服务域名和端口
+        target: 'http://localhost:3000', //后端请求服务域名和端口
         changeOrigin: true, //设置请求头
         pathRewrite: {
-          '^/baseUrl': '' //路径重写  前端/baseUrl 对应 后端/
+          '^/baseUrl': '/' //路径重写  前端/baseUrl 对应 后端/
         },
       }
     },

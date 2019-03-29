@@ -42,14 +42,19 @@
 							<br>
 							<label for>链接：</label>
 
-							<!--<input type="text" v-model="item.jumpUrl">-->
+							<input type="text" v-model="item.jumpUrl">
 
-							<div style="display: inline-block;position: relative;">
-								<select v-model="item.jumpUrl" class="page_select">
-									<option disabled value="">选择跳转到的页面</option>
-									<option v-for="(i,index) in pages" v-bind:key="index" :value="i.id">{{i.type_name}}{{i.id}}</option>
-								</select>
-							</div>
+							<!--<div style="display: inline-block;position: relative;">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  	选择跳转到的页面
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#">jmeter</a>
+                  </li>
+                </ul>
+              </div>-->
 
 						</div>
 						<button @click="remove_ImgItem(index)" class="swiper-slide-remove">X</button>
@@ -88,7 +93,7 @@
 				// my_data:data,
 			};
 		},
-		props: ["data","pages"],
+		props: ["data"],
 		methods: {
 			addedit() {
 				this.$emit('quiet', '')
@@ -138,31 +143,12 @@
 				}
 			},
 			showChangeBtn(title, n) {
-
-        var that = this;
-        localStorage.setItem("dIsPageSelectImg", true);
-        layer.open({
-          type: 2,
-          area: ['900px', '800px'],
-          fixed: false, //不固定
-          maxmin: true,
-          content: '/images/select',
-          title: '图片库',
-          end : function() {
-            let arrSelectImgs = JSON.parse(localStorage.getItem("dPageSelectedImgs"));
-            var imgOne = that.data.imgListL[0];
-            imgOne.url = arrSelectImgs[0];
-            localStorage.setItem("dIsPageSelectImg", false);
-            localStorage.setItem("dPageSelectedImgs", '');
-          }
-
-        });
-
-				// var that = this
-				// that.$set(that.data.imgListL[n], 'changeBtn', true)
-				// this.$nextTick(() => {
-				// 	document.getElementById('' + title + n).focus()
-				// })
+				var that = this
+				that.$set(that.data.imgListL[n], 'changeBtn', true)
+				this.$nextTick(() => {
+					document.getElementById('' + title + n).focus()
+				})
+				
 
 			},
 			hideChangeBtn(n) {
@@ -177,7 +163,9 @@
 			this.$dragging.$on('dragged', ({
 				value
 			}) => {
-				
+				console.log(value.item)
+				console.log(value.list)
+				console.log(value.group)
 			})
 		}
 	};
@@ -189,21 +177,17 @@
 		transform: translateX(0);
 		transition: all 1.5s ease;
 	}
-
+	
 	.image-leave-active {
 		transform: translateX(-100%);
 		transition: all 1.5s ease;
 	}
-
+	
 	.image-enter {
 		transform: translateX(100%);
 	}
-
+	
 	.image-leave {
 		transform: translateX(0);
-	}
-	.page_select{
-		width: 174px;
-		height: 26px;
 	}
 </style>
