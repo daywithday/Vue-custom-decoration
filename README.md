@@ -1,6 +1,6 @@
 # my-project
 
-> A Vue.js project
+> 声明在前面,这是模仿有赞商城的自定义装修,只实现了部分小功能,并不完善,提供一个思路.
 
 ## Build Setup
 
